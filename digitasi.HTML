@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BELAJAR WEBGIS -- (Dimas Rizky Ramadhani)</title>
+    <!-- LEAFLET CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+
+    <!-- LEAFLET JAVASCRIPT -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src ="E:\Data Dimas Rizky\PRODI\SEM 7\Webgis\WEBGIS\TITIK.js"></script>
+    <script src = "E:\Data Dimas Rizky\PRODI\SEM 7\Webgis\WEBGIS\GEDUNGPOLIGON.js"></script>
+    <script>
+        <!-- LOKASI KAJIAN -->
+        var map = L.map('map').setView([-5.367016, 105.317890], 15);
+
+        <!-- BASEMAP OPENSTREETMAP -->
+        var osm = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        });
+        osm.addTo(map);
+
+        <!-- BASEMAP ESRI -->
+        var Esri_WorldImagery = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, i-cubed, USDA, USGS, AEX, GeoEye, Getmapping, Aerogrid, IGN, IGP, UPR-EGP, and the GIS User Community'
+        });
+        Esri_WorldImagery.addTo(map);
+
+        //<!-- POSISI GEDUNG GKU 1 -->
+        //L.marker([-5.360932, 105.310530]).addTo(map);
+        //<!-- POSISI GEDUNG E -->
+        //L.marker([-5.3601532,105.3149719]).addTo(map);
+        //<!-- POSISI Embung A -->
+        //L.marker([-5.357784, 105.313079]).addTo(map);
+
+        <!-- BUNDARAN YANG SERING SAYA LANGGAR ATURAN SAAT BERLALU LINTAS DI ITERA -->
+        var bundaranF = L.circle([-5.363144517776935, 105.31262773225139], {
+            color: 'green',
+            fillColor: '#fff',
+            fillOpacity: 0.5,
+            radius: 20
+        }).addTo(map);
+        var bundaran = bundaranF.bindPopup("BUNDARAN YANG SERING SAYA LANGGAR ATURAN SAAT BERLALU LINTAS DI ITERA").openPopup()
+        bundaran.addTo(map);
+
+        <!-- BUNDARAN INI JUGA SERING SAYA LANGGAR SETELAH SELESAI KULIAH DI GKU 2 -->
+        var bundaranGKU2 = L.circle([-5.360773786082995, 105.31489050993528], {
+            color: 'black',
+            fillColor: 'red',
+            fillOpacity: 0.5,
+            radius: 50
+        }).addTo(map);
+        var bundarann = bundaranGKU2.bindPopup("BUNDARAN INI JUGA SERING SAYA LANGGAR SETELAH SELESAI KULIAH DI GKU 2").openPopup()
+        bundarann.addTo(map);
+
+        <!-- BUNDARAN GKU 1 -->
+        var bundaranGKU1 = L.circle([-5.363124307480833, 105.31127806291309], {
+            color: 'blue',
+            fillColor: 'white',
+            fillOpacity: 0.5,
+            radius: 20
+        }).addTo(map);
+        var bundarann = bundaranGKU1.bindPopup("Bundaran").openPopup()
+        bundarann.addTo(map);
+
+        //<!-- POLIGON BANGUNAN  GEDUNG F -->
+        //var polygonF = L.polygon([
+            //[-5.361298,105.313321],
+            //[-5.361458,105.313324],
+            //[-5.361454,105.313925],
+            //[-5.361502,105.313927],
+            //[-5.361505,105.313877],
+            //[-5.361719,105.313876],
+            //[-5.361711,105.314037],
+            //[-5.361505,105.314034],
+            //[-5.361499,105.313991],
+            //[-5.361453,105.313991],
+            //[-5.361448,105.314154],
+            //[-5.361283,105.314152],
+            //[-5.361277,105.313792],
+            //[-5.361172,105.313783],
+            //[-5.361169,105.313618],
+            //[-5.361284,105.313612]
+        //],
+        //{color: 'orange',fillcolor: 'orange'}).addTo(map);
+
+       // <!-- MENAMPILKAN NAMA Gerbang UTAMA -->
+        var gerbangutama = L.marker([-5.357568230643965, 105.31485887445221]);
+        var namagerbangutama = gerbangutama.bindPopup("Gerbang Utama").openPopup()
+        namagerbangutama.addTo(map);
+
+        //<!-- MENAMPILKAN NAMA Gedung A -->
+        var gedungA = L.marker([-5.357864231569367, 105.31442891079665]);
+        var namagedA = gedungA.bindPopup("Gedung A").openPopup()
+        namagedA.addTo(map);
+
+        //<!-- MENAMPILKAN NAMA Gedung B -->
+        var gedungB = L.marker([-5.357771427172896, 105.31538321395064]);
+        var namagedB = gedungB.bindPopup("Gedung B").openPopup()
+        namagedB.addTo(map);
+
+        //<!-- MENAMPILKAN NAMA Gedung C -->
+        var gedungC = L.marker([-5.358440208481771, 105.31339798828854]);
+        var namagedC = gedungC.bindPopup("Gedung C").openPopup()
+        namagedC.addTo(map);
+
+        //<!-- MENAMPILKAN NAMA Gedung D -->
+        var gedungD = L.marker([-5.3587059377976844, 105.3134818086675]);
+        var namagedD = gedungD.bindPopup("Gedung D").openPopup()
+        namagedD.addTo(map);
+
+        //<!-- MENAMPILKAN NAMA Gedung F -->
+        var gedungF = L.marker([-5.361440, 105.313753]);
+        var namagedF = gedungF.bindPopup("Gedung F").openPopup()
+        namagedF.addTo(map);
+
+        //<!-- MENAMPILKAN NAMA Gedung E-->
+        var gedungE = L.marker([-5.359965105683788, 105.3153685119301]);
+        var namaE = gedungE.bindPopup("Gedung E").openPopup()
+        namaE.addTo(map)
+
+        <!-- MENAMPILKAN NAMA Gedung GKU1-->
+        var gku1 = L.marker([-5.360979305395652, 105.31015307322834]);
+        var namagku1 = gku1.bindPopup("Gedung Kuliah Umum 1").openPopup()
+        namagku1.addTo(map)
+
+        //<!-- MENAMPILKAN NAMA Gedung GKU2-->
+        var gku2 = L.marker([-5.360440614533347, 105.31397057424321]);
+        var namagku2 = gku2.bindPopup("Gedung Kuliah Umum 2").openPopup()
+        namagku2.addTo(map)
+
+        <!-- MENAMPILKAN NAMA Labtek 1 -->
+        var labtek1 = L.marker([-5.360327668991885, 105.31030199417174]);
+        var namalab1 = labtek1.bindPopup("Laboratorium Teknik 1").openPopup()
+        namalab1.addTo(map);
+
+        <!-- MENAMPILKAN NAMA Labtek 2 -->
+        var labtek2 = L.marker([-5.361468338338795, 105.31047691308747]);
+        var namalab2 = labtek2.bindPopup("Laboratorium Teknik 2").openPopup()
+        namalab2.addTo(map);
+
+        <!-- MENAMPILKAN NAMA Labtek 3 -->
+        var labtek3 = L.marker([-5.360349125131383, 105.30884781415408]);
+        var namalab3 = labtek3.bindPopup("Laboratorium Teknik 3").openPopup()
+        namalab3.addTo(map);
+
+        <!-- MENAMPILKAN NAMA Labtek OZT -->
+        var labtekozt = L.marker([-5.362040378754545, 105.31064763780167]);
+        var namaozt = labtekozt.bindPopup("Laboratorium Teknik OZT").openPopup()
+        namaozt.addTo(map);
+
+        <!-- MENAMPILKAN NAMA Gerbang Barat -->
+        var gerbangbarat = L.marker([-5.363110887841806, 105.30886158247463]);
+        var namagerbangbarat = gerbangbarat.bindPopup("Gerbang Barat").openPopup()
+        namagerbangbarat.addTo(map);
+
+        <!-- MENAMPILKAN NAMA EMBUNG A -->
+        var embungA = L.marker([-5.357418005017927, 105.3136176512399]);
+        var namaembungA = embungA.bindPopup("Embung A").openPopup()
+        namaembungA.addTo(map);
+
+        <!-- MENAMPILKAN NAMA EMBUNG B -->
+        var embungB = L.marker([-5.3586815119869255, 105.3081180324669]);
+        var namaembungB = embungB.bindPopup("Embung B").openPopup()
+        namaembungB.addTo(map);
+
+        <!-- MENAMPILKAN NAMA EMBUNG C -->
+        var embungC = L.marker([-5.358990565353313, 105.314047885622633]);
+        var namaembungC = embungC.bindPopup("Embung C").openPopup()
+        namaembungC.addTo(map);
+
+        <!-- MENAMPILKAN NAMA EMBUNG D -->
+        var embungD = L.marker([-5.360239, 105.320693]);
+        var namaembungD = embungD.bindPopup("Embung D").openPopup()
+        namaembungD.addTo(map);
+
+        <!-- MENAMPILKAN NAMA EMBUNG E -->
+        var embungE = L.marker([-5.364908217883837, 105.316517118943]);
+        var namaembungE = embungE.bindPopup("Embung E").openPopup()
+        namaembungE.addTo(map);
+
+        <!-- MENAMPILKAN NAMA EMBUNG F -->
+        var embungF = L.marker([-5.36860912978357, 105.31942462371369]);
+        var namaembungF = embungF.bindPopup("Embung F").openPopup()
+        namaembungF.addTo(map);
+
+        <!-- MENAMPILKAN NAMA EMBUNG Sumatera -->
+        var embungSumatera = L.marker([-5.370232789114889, 105.31049828506963]);
+        var namasum = embungSumatera.bindPopup("Embung Pulau Sumatera").openPopup()
+        namasum.addTo(map)
+
+        <!-- MENAMPILKAN NAMA Asrama TPB-->
+        var TPB = L.marker([-5.358662204854221, 105.31824529887452]);
+        var namaTPB = TPB.bindPopup("Asrama TPB ITERA").openPopup()
+        namaTPB.addTo(map);
+        
+        <!-- MENAMPILKAN NAMA Asrama tb1-->
+        var tb1 = L.marker([-5.358450296020014, 105.31734698489436]);
+        var namatb1 = tb1.bindPopup("Asrama TB1").openPopup()
+        namatb1.addTo(map);
+
+        <!-- MENAMPILKAN NAMA Asrama tb2-->
+        var tb2 = L.marker([-5.358501474333179, 105.31931898904946]);
+        var namatb2 = tb2.bindPopup("Asrama TB2").openPopup()
+        namatb2.addTo(map);
+
+        <!-- MENAMPILKAN NAMA Asrama tb3-->
+        var tb3 = L.marker([-5.359161645434885, 105.31903212504513]);
+        var namatb3 = tb3.bindPopup("Asrama TB3").openPopup()
+        namatb3.addTo(map);
+
+        <!-- MENAMPILKAN NAMA Asrama tb4-->
+        var tb4 = L.marker([-5.359146245211649, 105.31752401104991]);
+        var namatb4 = tb4.bindPopup("Asrama TB4").openPopup()
+        namatb4.addTo(map);
+
+        <!-- MENAMPILKAN NAMA Asrama tb5-->
+        var tb5 = L.marker([-5.358424475812977, 105.31842162319705]);
+        var namatb5 = tb5.bindPopup("Asrama TB5").openPopup()
+        namatb4.addTo(map);
+        
+        <!-- MENAMPILKAN NAMA gerbang kebun raya -->
+        var kebunraya = L.marker([-5.369654785704575, 105.31475002485857]);
+        var namakebun = kebunraya.bindPopup("Gerbang Kebun Raya ITERA").openPopup()
+        namakebun.addTo(map);
+
+        <!-- MENAMPILKAN NAMA labirin kebun raya -->
+        var labirin = L.marker([-5.369724703192116, 105.312019719924]);
+        var namakebun = labirin.bindPopup("Labirin Kebun Raya ITERA").openPopup()
+        namakebun.addTo(map);
+
+        <!-- MENAMPILKAN NAMA RIMA--> 
+        var rima = L.marker([-5.358659175277138, 105.32106836780287]);
+        var namarima = rima.bindPopup("Rumah Ibadah Multi Agama").openPopup()
+        namarima.addTo(map);
+
+        <!-- MENAMPILKAN NAMA wisma dosen -->
+        var wisma = L.marker([-5.355850526840932, 105.31608752653577]);
+        var namawisma = wisma.bindPopup("Wisma Dosen").openPopup()
+        namawisma.addTo(map);
+
+        <!-- MENAMPILKAN NAMA GSG ITERA -->
+        var gsg = L.marker([-5.362576864006781, 105.31892394246213]);
+        var namagsg = gsg.bindPopup("GSG ITERA").openPopup()
+        namagsg.addTo(map);
+
+        <!-- MENAMPILKAN NAMA Masjid Baitil Ilmi -->
+        var baitililmi = L.marker([-5.359141853941641, 105.31257864553076]);
+        var namamasjid2 = baitililmi.bindPopup("Masjid Baitil Ilmi").openPopup()
+        namamasjid2.addTo(map)    
+
+        <!-- MENAMPILKAN NAMA Masjid Attanwir -->
+        var attanwir = L.marker([-5.356699555025746, 105.3187581372922]);
+        var namamasjid1 = attanwir.bindPopup("Masjid Attanwir").openPopup()
+        namamasjid1.addTo(map)
+
+        var baseMaps = {
+            "OSM": osm,
+            "ESRI": Esri_WorldImagery
+        };
+
+        var overlayMaps = {
+        "Gerbang Utama": gerbangutama,
+        "Gerbang Barat": gerbangbarat,
+        "Gedung A" : gedungA,
+        "Gedung B" : gedungB,
+        "Gedung C" : gedungC,
+        "Gedung D" : gedungD,
+        "Gedung E" : gedungE,
+        "Gedung F" : gedungF,
+        "Gedung GKU1" : gku1,
+        "Gedung GKU2" : gku2,
+        "Laboratorium Teknik 1": labtek1,
+        "Laboratorium Teknik 2": labtek2,
+        "Laboratorium Teknik 3": labtek3,
+        "Laboratorium Teknik OZT": labtekozt,
+        "Asrama TB1": tb1,
+        "Asrama TB2": tb2,
+        "Asrama TB3": tb3,
+        "Asrama TB4": tb4,
+        "Asrama TB5": tb5,
+        "Asrama TPB ITERA": TPB,
+        "Embung A": embungA,
+        "Embung B": embungB,
+        "Embung C": embungC,
+        "Embung D": embungD,
+        "Embung E": embungE,
+        "Embung F": embungF,
+        "Gerbang Kebun Raya":kebunraya,
+        "Labirin Kebun Raya":labirin,
+        "Embung Pulau Sumtera":embungSumatera,
+        "Wisma Dosen": wisma,
+        "GSG ITERA": gsg,
+        "Masjid Baitil Ilmi": baitililmi,
+        "Masjid Attanwir": attanwir
+    };
+
+        L.control.layers(baseMaps, overlayMaps, {collapsed: false}).addTo(map);
+        L.geoJSON(titikgeojson).addTo(map);
+        L.geoJSON(gedungitera).addTo(map);
+    </script>
+</body>
+</html>
